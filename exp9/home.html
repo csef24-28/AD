@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section id="section-about" class="bg-grey">
+    <div class="container">
+        <div class="row pt-4">
+
+            <div class="col-md-6 col-sm-12">
+                <img src="{{ url_for('static', filename=home_image) }}" alt="about image" class="img-responsive">
+            </div>
+
+            <div class="col-md-1"></div>
+
+            <div class="col-md-5 col-sm-12">
+                <div class="about-box">
+                    <h2 class="box-title">Python Flask Example</h2>
+                    <div class="tiny-border"></div>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua.
+                    </p>
+
+                    <ul class="list-style-1">
+                        <li>Donec malesuada urna porta tellus feugiat</li>
+                        <li>Nullam consequat lacus non luctus finibus.</li>
+                        <li>Interdum et malesuada fames ac ante</li>
+                        <li>Nam justo ipsum, sagittis sed hendrerit ac</li>
+                    </ul>
+
+                    <div class="divider-single"></div>
+
+                    <a href="#" class="btn btn-primary btn-small">Get Started</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
