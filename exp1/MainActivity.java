@@ -1,40 +1,40 @@
-package com.example.experiment2;
+package com.example.intentsdemo;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    Button b1,b2,b3;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        b1=findViewById(R.id.button);
-        b2=findViewById(R.id.button2);
-        b3=findViewById(R.id.button3);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent dial=new Intent(MainActivity.this,Dial.class);
-                startActivity(dial);
-            }
+
+        Button dial = findViewById(R.id.btnDial);
+        Button web = findViewById(R.id.btnWeb);
+        Button sms = findViewById(R.id.btnSms);
+
+        dial.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_DIAL);
+            i.setData(Uri.parse("tel:1234567890"));
+            startActivity(i);
         });
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent sms=new Intent(MainActivity.this,Sms.class);
-                startActivity(sms);
-            }
+
+        web.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("https://example.com"));
+            startActivity(i);
         });
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent website=new Intent(MainActivity.this,Website.class);
-                startActivity(website);
-            }
+
+        sms.setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_SENDTO);
+            i.setData(Uri.parse("smsto:9876543210"));
+            i.putExtra("sms_body", "Hello");
+            startActivity(i);
         });
     }
 }
