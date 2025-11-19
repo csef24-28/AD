@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
         sms.setOnClickListener(v -> {
             Intent i = new Intent(Intent.ACTION_SENDTO);
             i.setData(Uri.parse("smsto:9876543210"));
-            i.putExtra("sms_body", "Hello");
             startActivity(i);
         });
     }
 }
+
