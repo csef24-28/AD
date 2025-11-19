@@ -1,16 +1,15 @@
-from flask import Flask, request
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-@app.route('/login', methods=['POST'])
+@app.route("/", methods=["GET", "POST"])
 def login():
-    uname = request.form['uname']
-    passwrd = request.form['pass']
+    if request.method == "POST":
+        u = request.form["user"]
+        p = request.form["pass"]
+        if u == "admin" and p == "123":
+            return f"Welcome {u}"
+        return "Invalid login"
+    return render_template("login.html")
 
-    if uname == "google" and passwrd == "google":
-        return "Welcome %s" % uname
-    else:
-        return "Invalid credentials"
-
-if __name__ == '__main__':
-    app.run(debug=True)
+app.run()
