@@ -59,4 +59,5 @@ def get_response(user_input):
 
 # Chat loop
 while True:
+
     print('Bot:', get_response(input('You: ')))
